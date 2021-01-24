@@ -17,7 +17,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   margin: 0;
-  padding-bottom: 25px;
+  padding-bottom: 30px;
   font-family: 'Lato', sans-serif;
 }
 
@@ -31,6 +31,7 @@ body {
 .draggable-list li {
   background-color: #fff;
   display: flex;
+  /* Same as flex: 1 1 0 (flex-grow, flex-shrink, flex-basis) - grows and shrinks in same proportion as window size and doesn't have a starting value https://stackoverflow.com/questions/37386244/what-does-flex-1-mean */
   flex: 1;
 }
 
@@ -53,11 +54,11 @@ body {
 }
 
 .draggable-list .person-name {
-  margin: 0 20px 0 0;
+  margin: 0 50px 0 0;
 }
 
 .draggable-list li.right .person-name {
-  color: #3ae374;
+  color: #2fc764;
 }
 
 .draggable-list li.wrong .person-name {
@@ -80,6 +81,8 @@ body {
   font-size: 16px;
   padding: 10px 20px;
   cursor: pointer;
+  margin-top: 15px;
+  border-radius: 3px;
 }
 
 .check-btn:active {
