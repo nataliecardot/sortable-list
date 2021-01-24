@@ -1,6 +1,6 @@
 # Sortable List
 
-Vanilla JS scrambled list that can be sorted with drag and drop
+Vanilla JS scrambled list that can be sorted with drag and drop, using the [HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API).
 
 ## Project Specifications
 
