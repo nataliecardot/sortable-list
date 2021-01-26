@@ -84,6 +84,7 @@ function dragDrop() {
   this.classList.remove('over');
 }
 
+// Swap drag-and-drop list items
 function swapItems(fromIndex, toIndex) {
   // The querySelector() method of the Element interface returns the first element that is a descendant of the element on which it is invoked that matches the specified group of selectors - getting div with class draggable that is a child of li item of specified index
   const itemOne = listItems[fromIndex].querySelector('.draggable');
@@ -91,6 +92,20 @@ function swapItems(fromIndex, toIndex) {
 
   listItems[fromIndex].appendChild(itemTwo);
   listItems[toIndex].appendChild(itemOne);
+}
+
+// Check order of list items
+function checkOrder() {
+  listItems.forEach((listItem, index) => {
+    const personName = listItem.querySelector('.draggable').innerText.trim();
+
+    if (personName !== richestPeople[index]) {
+      listItem.classList.add('wrong');
+    } else {
+      listItem.classList.remove('wrong');
+      listItem.classList.add('right');
+    }
+  });
 }
 
 function addEventListeners() {
@@ -109,3 +124,5 @@ function addEventListeners() {
     item.addEventListener('dragleave', dragLeave);
   });
 }
+
+check.addEventListener('click', checkOrder);

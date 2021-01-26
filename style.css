@@ -58,10 +58,14 @@ body {
 }
 
 .draggable-list li.right .person-name {
-  color: #2fc764;
+  font-weight: bold;
+  letter-spacing: 0.4px;
+  color: #25b156;
 }
 
 .draggable-list li.wrong .person-name {
+  font-weight: bold;
+  letter-spacing: 0.4px;
   color: #ff3838;
 }
 
