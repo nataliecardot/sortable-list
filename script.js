@@ -49,4 +49,63 @@ function createList() {
 
       draggable_list.appendChild(listItem);
     });
+
+  addEventListeners();
+}
+
+function dragStart() {
+  // Using unary plus operator to convert to a number
+  // li is parent of target element, div with person's name
+  // The closest() method traverses the Element and its parents (heading toward the document root) until it finds a node that matches the provided selector string. Will return itself or the matching ancestor
+  dragStartIndex = +this.closest('li').getAttribute('data-index');
+  // Can also use parentNode - same result
+  // dragStartIndex = +this.parentNode.getAttribute('data-index');
+}
+
+function dragEnter() {
+  // this keyword pertains to element (event listeners are executed with 'this' set to the event target - automatically passed to function called by event listener)
+  this.classList.add('over');
+}
+
+function dragLeave() {
+  this.classList.remove('over');
+}
+
+// Only including this one to keep dragover event from interfering with drop event; preventing default behavior - otherwise dragDrop won't be executed
+function dragOver(e) {
+  e.preventDefault();
+}
+
+function dragDrop() {
+  const dragEndIndex = +this.getAttribute('data-index');
+  // Note: dragStartIndex was reassigned by function dragStart (initialized in top-level scope)
+  swapItems(dragStartIndex, dragEndIndex);
+
+  this.classList.remove('over');
+}
+
+function swapItems(fromIndex, toIndex) {
+  // The querySelector() method of the Element interface returns the first element that is a descendant of the element on which it is invoked that matches the specified group of selectors - getting div with class draggable that is a child of li item of specified index
+  const itemOne = listItems[fromIndex].querySelector('.draggable');
+  const itemTwo = listItems[toIndex].querySelector('.draggable');
+
+  listItems[fromIndex].appendChild(itemTwo);
+  listItems[toIndex].appendChild(itemOne);
+}
+
+function addEventListeners() {
+  // querySelectorAll gives you a static NodeList
+  const draggables = document.querySelectorAll('.draggable');
+  const dragListItems = document.querySelectorAll('.draggable-list li');
+
+  draggables.forEach((draggable) => {
+    draggable.addEventListener('dragstart', dragStart);
+  });
+
+  dragListItems.forEach((item) => {
+    item.addEventListener('dragover', dragOver);
+    item.addEventListener('drop', dragDrop);
+    item.addEventListener('dragenter', dragEnter);
+    item.addEventListener('dragleave', dragLeave);
+  });
 }
