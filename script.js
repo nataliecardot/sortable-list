@@ -1,17 +1,27 @@
 const draggable_list = document.getElementById('draggable-list');
 const check = document.getElementById('check');
 
-const richestPeople = [
-  'Jeff Bezos',
-  'Elon Musk',
-  'Bernard Arnault',
-  'Bill Gates',
-  'Mark Zuckerberg',
-  'Zhong Shanshan',
-  'Warren Buffett',
-  'Larry Ellison',
-  'Larry Page',
-  'Sergey Brin',
+const germanNumbers = [
+  'eins',
+  'zwei',
+  'drei',
+  'vier',
+  'fünf',
+  'sechs',
+  'sieben',
+  'acht',
+  'neun',
+  'zehn',
+  'elf',
+  'zwölf',
+  'dreizehn',
+  'vierzehn',
+  'fünfzehn',
+  'sechzehn',
+  'siebzehn',
+  'achtzehn',
+  'neunzehn',
+  'zwanzig',
 ];
 
 // Store listitems
@@ -24,7 +34,7 @@ createList();
 // Insert list items into DOM
 function createList() {
   // Copy array with spread syntax
-  [...richestPeople]
+  [...germanNumbers]
     // Map over array items to create an array of objects, one for each item, which also includes a random number to sort with
     .map((a) => ({ value: a, num: Math.random() }))
     // Sort numerical ascending by random number
@@ -99,7 +109,7 @@ function checkOrder() {
   listItems.forEach((listItem, index) => {
     const personName = listItem.querySelector('.draggable').innerText.trim();
 
-    if (personName !== richestPeople[index]) {
+    if (personName !== germanNumbers[index]) {
       listItem.classList.add('wrong');
     } else {
       listItem.classList.remove('wrong');
